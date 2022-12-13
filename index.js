@@ -1,19 +1,42 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
+      const dispNumber = {};
+  
+    for (const number of array) {
+      const newNumber = target - number;
+      if (newNumber in dispNumber) return true;
+      dispNumber[number] = true;
+    }
+  
+
+
+return false;
 }
-
-/* 
-  Write the Big O time complexity of your function here
+/*Runtime: O(number^2)
+function hasTargetSum(array, target) {
+  for (let i = 0; i < array.length; i++) {
+    const newNumber = target - array[i];
+    for (let j = i + 1; j < array.length; j++) {
+      if (array[j] === newNumber) return true;
+    }
+  }
 */
 
 /* 
-  Add your pseudocode here
+    hasTargetSum([1,2,3,4], 6)
+  dispNumber = {
+    1: true,
+    2: true,
+    3: true
+  }
+  create an object to keep track of numbers we've already displayed
+  iterate through each number in the array
+    for the current number, identify a newNuber that adds to the target (newNumber = target - num)
+    check if any key on our object is the newNumber
+      if so, return true
+      otherwise, add that number to the object
+  if we reach the end of the array, return false
 */
-
-/*
-  Add written explanation of your solution here
-*/
-
 // You can run `node index.js` to view these console logs
 if (require.main === module) {
   // add your own custom tests in here
